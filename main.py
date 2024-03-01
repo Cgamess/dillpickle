@@ -19,4 +19,4 @@ def decode(input_data_serialized_vfid):
     if hashes[1] != sha3_512(output):
         raise ValueError("Incorrect second hash")
     return(output)
-print(decode())
+print(decode(""))
