@@ -10,7 +10,7 @@ def encode(*input_data):
     output += sha3_512(output.encode()) + sha3_512(input_data.encode())
     return output
 def decode(input_data_serialized_vfid):
-    output=encode("")
+    output=encode(b" ")
     input_data_serialized=input_data_serialized_vfid[:-128]
     hashes=[input_data_serialized_vfid[-128:-64],input_data_serialized_vfid[-64:]]
     if hashes[0] != sha3_512(input_data_serialized):
@@ -19,4 +19,4 @@ def decode(input_data_serialized_vfid):
     if hashes[1] != sha3_512(output):
         raise ValueError("Incorrect second hash")
     return(output)
-print(decode(""))
+print(decode(b" "))
