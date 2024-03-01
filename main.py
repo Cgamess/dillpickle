@@ -10,7 +10,7 @@ def encode(*input_data):
     output+=sha3_512(output)+sha3_512(input_data)
     return output
 def decode(input_data_serialized_vfid):
-    output=""
+    output=b""
     input_data_serialized=input_data_serialized_vfid[:-128]
     hashes=[input_data_serialized_vfid[-128:-64],input_data_serialized_vfid[-64:]]
     if hashes[0] != sha3_512(input_data_serialized):
