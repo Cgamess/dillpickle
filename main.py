@@ -7,7 +7,7 @@ import cryptography as cry
 def encode(*input_data):
     output=b""
     # code
-    output+=sha3_512(output)+sha3_512(input_data)
+    output += sha3_512(output.encode()) + sha3_512(input_data.encode())
     return output
 def decode(input_data_serialized_vfid):
     output=encode("")
