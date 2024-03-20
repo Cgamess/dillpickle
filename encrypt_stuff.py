@@ -20,3 +20,24 @@ def crypt(data, hash, key, qkey):
             qc_itr=1
         else:
             raise ValueError("Key must be bytes or an iterable of bytes")
+    if not st_itr:
+        cip=cry.fernet.Fernet(key)
+        try:
+            e_data=cip.encrypt(bytes(data))
+        except:
+            e_data=cip.encrypt(data.encode())
+    else:
+        cip=cry.fernet.Fernet(key[0])
+        try:
+            ce_data=cip.encrypt(bytes(data))
+        except:
+            ce_data=cip.encrypt(data.encode())
+        for i in range(1,len(key-1)):
+            cip=cry.fernet.Fernet(key[i])
+            ce_data=cip.encrypt(ce_data)
+        cip=cry.fernet.Fernet(key[-1])
+        e_data=cip.encrypt(ce_data)
+
+        # add quantom stuff later
+
+        return e_data

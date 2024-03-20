@@ -4,7 +4,7 @@ import dill, json, os
 import pickletools as pklt
 from hashlib import *
 import cryptography as cry
-import qencrypt.handle as qcry
+# add quantom proof encryption lib
 def encode(*input_data):
     output=b""
     output+=(input_data)[0]
